@@ -19,9 +19,13 @@ class BotBangsatClass {
             });
 
         const selectedKata: string = RandomKata(this.kata);
-        const sentence = selectedKata.includes(' -- ') ? ` ${selectedKata.split(' -- ').join(this.specialWord)}` : ` ${selectedKata} ${this.specialWord}`;
+        
+        let sentence = selectedKata.includes(' -- ') ? ` ${selectedKata.split(' -- ').join(this.specialWord)}` : ` ${selectedKata} ${this.specialWord}`;
+        if(selectedKata === 'bapak') {
+            sentence = `bapak kau ${this.specialWord}`
+        }
 
-        await DrawToCanvas.drawTextToCanvas(sentence);
+        await DrawToCanvas.drawTextToCanvas(selectedKata, sentence);
         await DrawToCanvas.uploadToImgur()
             .then((res) => {
                 Log('Uploaded to imgur: ' + res.link);
