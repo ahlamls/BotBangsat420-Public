@@ -13,11 +13,11 @@ class DrawToCanvasClass {
     private bgColor: any;
     private initialFontSize: number = 60;
 
-    public async drawTextToCanvas(text: string): Promise<void> {
+    public async drawTextToCanvas(word: string, text: string): Promise<void> {
         return new Promise((res) => {
             Log('Generating Image...');
 
-            this.bgColor = Color.randomRGBColor();
+            this.bgColor = Color.randomRGBColor(word);
 
             this.initialFontSize = 60;
 
@@ -34,7 +34,14 @@ class DrawToCanvasClass {
             this.context.fillStyle = Color.parseRGB(this.bgColor);
             this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-            this.context.fillStyle = Color.getBrightness(this.bgColor) > 0.5 ? '#000' : '#fff';
+            let textColor = Color.getBrightness(this.bgColor) > 0.5 ? '#000' : '#fff';
+            if(word === 'gelap') {
+                textColor = '#333';
+            } else if(word === 'terang' || word === 'silau') {
+                textColor = '#ccc';
+            }
+            
+            this.context.fillStyle = textColor;
             this.context.fillText(text, this.canvas.width / 2, this.canvas.height / 2);
 
             res();
