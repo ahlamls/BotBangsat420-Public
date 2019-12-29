@@ -1,10 +1,12 @@
 class ColorManagerClass {
-    public randomRGBColor(): ColorTypeRGB {
+    public randomRGBColor(kata: string): ColorTypeRGB {
         const r = Math.floor(Math.random() * 256);
         const g = Math.floor(Math.random() * 256);
         const b = Math.floor(Math.random() * 256);
     
-        return { r, g, b };
+        if(kata === 'gelap') return { r:0, g:0, b:0 };
+        else if(kata === 'terang' || kata === 'silau') return { r:255, g:255, b:255 };
+        else return { r, g, b };
     }
     
     public parseRGB(rgb: ColorTypeRGB): string {
