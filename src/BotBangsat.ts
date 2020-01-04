@@ -9,7 +9,7 @@ require('dotenv').config();
 
 class BotBangsatClass {
     constructor() { }
-    private specialWord = 'bangsat';
+    private specialWord = 'goblok';
     private kata: any[] = [];
 
     public async upload(timer: any[]): Promise<void> {
