@@ -85,7 +85,7 @@ var addComment = function (postID, data) {
                 tokenFB = process.env.FB_TOKEN;
                 facebookPageID = process.env.FB_PAGEID;
                 link = data.word;
-                comment = "https://kbbi.web.id/" + link.toLowerCase().replace(' ', '_') + "\n\nWarna Latar Belakang: " + data.bg + "\nKata Tersisa: " + data.remainings;
+                comment = "Bot Terinspirasi dan mendapat source code dari page Bot Bangsat 420.0 -  https://kbbi.web.id/" + link.toLowerCase().replace(' ', '_') + "\n\nWarna Background: " + data.bg + "\nKata yang tersisa: " + data.remainings;
                 requestURL = "https://graph.facebook.com/" + facebookPageID + "_" + postID + "/comments?method=POST&message=" + encodeURIComponent(comment) + "&access_token=" + tokenFB;
                 result_1 = '';
                 https.get(requestURL, function (resp) { return __awaiter(void 0, void 0, void 0, function () {

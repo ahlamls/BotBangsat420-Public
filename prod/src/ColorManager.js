@@ -13,6 +13,27 @@ var ColorManagerClass = /** @class */ (function () {
         var r = rgb.r, g = rgb.g, b = rgb.b;
         return "rgb(" + r + "," + g + "," + b + ")";
     };
+ ColorManagerClass.prototype.parseRGBx = function (rgb) {
+        var r = rgb.r, g = rgb.g, b = rgb.b;
+if (r > 50) {
+    r = r - 50; 
+} else {
+    r = r + 50;
+}
+
+if (g > 50) {
+    g = g - 50; 
+} else {
+    g = g + 50;
+}
+
+if (b > 50) {
+    b = b - 50; 
+} else {
+    b = b + 50;
+}
+        return "rgb(" + r + "," + g + "," + b + ")";
+    };
     ColorManagerClass.prototype.getBrightness = function (rgb) {
         var r = rgb.r, g = rgb.g, b = rgb.b;
         return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;

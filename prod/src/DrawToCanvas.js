@@ -37,6 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var canvas_1 = require("canvas");
+const { registerFont, createCanvas } = require('canvas');
+registerFont('comicsans.ttf', { family: 'Comic Sans' });
 var ColorManager_1 = require("./ColorManager");
 var rz_logger_1 = require("./rz-logger");
 var DrawToCanvasClass = /** @class */ (function () {
@@ -55,13 +57,17 @@ var DrawToCanvasClass = /** @class */ (function () {
                         _this.initialFontSize = 60;
                         _this.context.textAlign = 'center';
                         _this.context.textBaseline = 'middle';
-                        _this.context.font = _this.initialFontSize + "px Arial";
+                        _this.context.font = _this.initialFontSize + "px Comic Sans";
                         var decrease = 0;
                         while (_this.context.measureText(text).width > (_this.canvas.width * 0.8)) {
-                            _this.context.font = _this.initialFontSize - decrease + "px Arial";
+                            _this.context.font = _this.initialFontSize - decrease + "px Comic Sans";
                             decrease++;
                         }
-                        _this.context.fillStyle = ColorManager_1.Color.parseRGB(_this.bgColor);
+//                        _this.context.fillStyle = ColorManager_1.Color.parseRGB(_this.bgColor);
+var my_gradient = _this.context.createLinearGradient(0, 0, 0, 170);
+my_gradient.addColorStop(0,ColorManager_1.Color.parseRGB(_this.bgColor));
+my_gradient.addColorStop(1,ColorManager_1.Color.parseRGBx(_this.bgColor));
+_this.context.fillStyle = my_gradient;
                         _this.context.fillRect(0, 0, _this.canvas.width, _this.canvas.height);
                         _this.context.fillStyle = ColorManager_1.Color.getBrightness(_this.bgColor) > 0.5 ? '#000' : '#fff';
                         _this.context.fillText(text, _this.canvas.width / 2, _this.canvas.height / 2);

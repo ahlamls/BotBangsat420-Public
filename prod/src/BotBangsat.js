@@ -62,7 +62,7 @@ var rz_logger_1 = require("./rz-logger");
 require('dotenv').config();
 var BotBangsatClass = /** @class */ (function () {
     function BotBangsatClass() {
-        this.specialWord = 'bangsat';
+        this.specialWord = 'goblok';
         this.kata = [];
     }
     BotBangsatClass.prototype.upload = function (timer) {
